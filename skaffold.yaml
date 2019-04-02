@@ -7,7 +7,7 @@ build:
     docker: {}
   tagPolicy:
     envTemplate:
-      template: '{{.DOCKER_REGISTRY}}/jstrachan/godemo21:{{.VERSION}}'
+      template: '{{.DOCKER_REGISTRY}}/jenkinsx-dev/godemo21:{{.VERSION}}'
   local: {}
 deploy:
   kubectl: {}
@@ -18,7 +18,7 @@ profiles:
     - docker: {}
     tagPolicy:
       envTemplate:
-        template: '{{.DOCKER_REGISTRY}}/jstrachan/godemo21:{{.DIGEST_HEX}}'
+        template: '{{.DOCKER_REGISTRY}}/jenkinsx-dev/godemo21:{{.DIGEST_HEX}}'
     local: {}
   deploy:
     helm:
@@ -26,5 +26,5 @@ profiles:
       - name: godemo21
         chartPath: charts/godemo21
         setValueTemplates:
-          image.repository: '{{.DOCKER_REGISTRY}}/jstrachan/godemo21'
+          image.repository: '{{.DOCKER_REGISTRY}}/jenkinsx-dev/godemo21'
           image.tag: '{{.DIGEST_HEX}}'
